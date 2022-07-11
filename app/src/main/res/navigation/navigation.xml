@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/signingUpFragment">
+
+    <fragment
+        android:id="@+id/postListFragment"
+        android:name="com.danielpasser.posts.ui.postlist.PostListFragment"
+        android:label="ArticleListFragment" >
+        <action
+            android:id="@+id/to_postFragment"
+            app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_postListFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.danielpasser.posts.ui.post.PostFragment"
+        android:label="PostFragment" >
+
+        <argument
+            android:name="post"
+            app:argType="com.danielpasser.posts.model.PostCodable"
+           />
+        <action
+            android:id="@+id/to_editCommentFragment"
+            app:destination="@id/editCommentFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="com.danielpasser.posts.ui.editpost.EditPostFragment"
+        android:label="EditPostFragment" >
+        <argument
+            android:name="post"
+            app:argType="com.danielpasser.posts.model.PostCodable"
+            />
+        <argument
+            android:name="state"
+            app:argType="com.danielpasser.posts.utils.EditAddState" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/editCommentFragment"
+        android:name="com.danielpasser.posts.ui.editcomment.EditCommentFragment"
+        android:label="EditCommentFragment" >
+        <argument
+            android:name="comment"
+            app:argType="com.danielpasser.posts.model.CommentCodable"
+            />
+        <argument
+            android:name="state"
+            app:argType="com.danielpasser.posts.utils.EditAddState" />
+        <argument
+            android:name="postId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.danielpasser.posts.ui.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/to_postListFragment"
+            app:destination="@id/postListFragment" />
+        <action
+            android:id="@+id/to_signingUpFragment"
+            app:destination="@id/signingUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signingUpFragment"
+        android:name="com.danielpasser.posts.ui.signingup.SigningUpFragment"
+        android:label="SigningUpFragment" >
+        <action
+            android:id="@+id/to_postListFragment"
+            app:destination="@id/postListFragment" />
+        <action
+            android:id="@+id/to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>
